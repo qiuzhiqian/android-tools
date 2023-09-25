@@ -1,0 +1,19 @@
+Index: android-tools/system/core/adb/usb_linux_client.c
+===================================================================
+--- android-tools.orig/system/core/adb/usb_linux_client.c
++++ android-tools/system/core/adb/usb_linux_client.c
+@@ -34,9 +34,13 @@
+ #define MAX_PACKET_SIZE_FS	64
+ #define MAX_PACKET_SIZE_HS	512
+ 
++#if 0
+ #define cpu_to_le16(x)  htole16(x)
+ #define cpu_to_le32(x)  htole32(x)
+-
++#else
++#define cpu_to_le16(x)  (x)
++#define cpu_to_le32(x)  (x)
++#endif
+ struct usb_handle
+ {
+     adb_cond_t notify;
