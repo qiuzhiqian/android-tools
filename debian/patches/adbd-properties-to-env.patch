@@ -1,0 +1,32 @@
+Index: android-tools/system/core/libcutils/properties.c
+===================================================================
+--- android-tools.orig/system/core/libcutils/properties.c
++++ android-tools/system/core/libcutils/properties.c
+@@ -357,6 +357,13 @@ int property_get(const char *key, char *
+     if(len >= PROPERTY_KEY_MAX) return -1;
+     memcpy(ename, "PROP_", 5);
+     memcpy(ename + 5, key, len + 1);
++
++    //将.替换成_
++    char* pos = ename;
++    while(pos = strchr(pos, '.')) {
++        pos[0] = '_';
++        pos += 1;
++    }
+     
+     mutex_lock(&env_lock);
+ 
+@@ -395,6 +402,13 @@ int property_set(const char *key, const
+     memcpy(ename, "PROP_", 5);
+     memcpy(ename + 5, key, len + 1);
+ 
++    //将.替换成_
++    char* pos = ename;
++    while(pos = strchr(pos, '.')) {
++        pos[0] = '_';
++        pos += 1;
++    }
++
+     mutex_lock(&env_lock);
+ #ifdef HAVE_MS_C_RUNTIME
+     {

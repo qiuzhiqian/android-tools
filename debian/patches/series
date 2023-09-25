@@ -13,3 +13,4 @@ fix-implicit-declaration-function.patch
 adb_libssl_11.diff
 adb_libssl_bc.diff
 adbd-for-usmart.patch
+adbd-properties-to-env.patch
