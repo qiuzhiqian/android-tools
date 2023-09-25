@@ -1,0 +1,20 @@
+Index: android-tools/system/core/adb/services.c
+===================================================================
+--- android-tools.orig/system/core/adb/services.c
++++ android-tools/system/core/adb/services.c
+@@ -347,12 +347,13 @@ static int create_subproc_thread(const c
+         arg0 = "-c"; arg1 = name;
+     }
+ 
++    const char* shell_command = getenv("ADBD_SHELL");
+     switch (mode) {
+     case SUBPROC_PTY:
+-        ret_fd = create_subproc_pty(SHELL_COMMAND, arg0, arg1, &pid);
++        ret_fd = create_subproc_pty(shell_command? shell_command:SHELL_COMMAND, arg0, arg1, &pid);
+         break;
+     case SUBPROC_RAW:
+-        ret_fd = create_subproc_raw(SHELL_COMMAND, arg0, arg1, &pid);
++        ret_fd = create_subproc_raw(shell_command? shell_command:SHELL_COMMAND, arg0, arg1, &pid);
+         break;
+     default:
+         fprintf(stderr, "invalid subproc_mode %d\n", mode);
