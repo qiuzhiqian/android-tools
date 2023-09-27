@@ -56,4 +56,5 @@
 !/build/core/combo/include/arch/
 !/build/core/combo/include/arch/linux-*/
 !/build/core/combo/include/arch/linux-*/AndroidConfig.h
-
+!/debian/
+!/debian/patches/

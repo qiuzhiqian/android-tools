@@ -12,6 +12,6 @@ define-shell-command.patch
 fix-implicit-declaration-function.patch
 adb_libssl_11.diff
 adb_libssl_bc.diff
-adbd-for-usmart.patch
+fix-cpu-to-le16-compile-error.patch
 adbd-properties-to-env.patch
 adbd-custom-shell-command.patch
